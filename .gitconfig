@@ -1,20 +1,83 @@
-[push]
-	default = current
+[user]
+  name = Dustin Tinney
+  email = tinney@gmail.com
+
+[alias]
+  remotebranch = !sh -c 'git push origin HEAD:refs/heads/$0 && git checkout --track -b $0 origin/$0'
+  trackbranch = !sh -c 'git checkout --track -b $0 origin/$0'
+  c = commit
+  ci = commit
+  s = status
+  st = status
+  co = checkout
+  undo = reset HEAD~1 --mixed
+
+[core]
+	excludesfile = /Users/justin/.gitignore_global
+	mergetool = opendiff
+
 [branch]
 	autosetuprebase = always
 	autosetupmerge = true
-[user]
-	name = Justin Searls
-	email = searls@gmail.com
-[core]
-	editor = mvim -f
-	excludesfile = /Users/justin/.gitignore_global
-	mergetool = opendiff
-[heroku]
-	account = personal
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[gui]
+  fontui = -family \"Lucida Grande\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family \"PrimaSansMono BT Roman\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+
 [merge]
-	tool = opendiff
-[diff]
-	renames = true
-[help]
-	autocorrect = 1
+  tool = opendiff
+
+[core]
+  quotepath = false
+	excludesfile = /Users/tinney/.gitignore_global
+
+[push]
+	default = simple
+
+; from dan
+; [alias]
+;   50   a = add
+;   51   b = branch
+;   52   c = commit -v
+;   53   p = push
+;   54   cm = commit -m
+;   55   cl = clone
+;   56   co = checkout
+;   57   cp = cherry-pick
+;   58   d = diff
+;   59   dc = diff --cached
+;   60   l = log --graph --abbrev-commit --date=relative --decorate --all
+;   61   y = log --pretty=format:\"%C(green)%ad%Creset %C(yellow)%h%Creset - %s%C(red)%d%Creset\" --date=short --all --decorate --author=dwthompson@gmail.com
+;   62   re = rebase
+;   63   st = stash
+;   64   sub = submodule
+;   65   s = status
+;   66   bp = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
+;   67
+;   68  ; add a vim sub module
+;   69  ; git submodule add -f git@github.com:tpope/vim-dispatch.git ~/.vim/bundle/vim-dispatch
+;   70
+;   71
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
