@@ -35,6 +35,16 @@ elif [[ "$SHELL" == *bash ]]; then
   fi
 fi
 
+  ## Bash settings
+
+  ### stickier .bash_history
+  shopt -s histappend
+
+  ### Set up tab-completion (requires `brew install bash-completion`)
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    source $(brew --prefix)/etc/bash_completion
+  fi
+
 ## Set fzf to use rg like so for ctrl-t in shell:
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
@@ -45,11 +55,10 @@ ulimit -n 10000
 export ICLOUD_DRIVE="$HOME/icloud-drive"
 
 ## Source ENV variables
-source "$ICLOUD_DRIVE/dotfiles/.env"
+# source "$ICLOUD_DRIVE/dotfiles/.env"
 
 ## load custom PS1 prompt
 source $HOME/bin/ps1
-
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -100,9 +109,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ## Popular Pays
 # export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 # alias pp_suite_start='rails s -b 0.0.0.0' why did they use 0.0.0.0 for this?
-#alias pp_social_data_start='foreman start' foreman still used?
-
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="\[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+# alias pp_social_data_start='foreman start' foreman still used?

@@ -1,4 +1,5 @@
 /.homebridge/persist
 /.vim/swapfiles
 /.vim/.netrwhist
+/.vim/backup
 /.env

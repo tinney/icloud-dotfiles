@@ -57,7 +57,8 @@ fi
 
 ## Set shell to zsh
 
-sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+# sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+# you can also do this in the preference pane for users
 
 ## Set up node
 NODE_VERSION="6.9.2"
