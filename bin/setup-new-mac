@@ -7,7 +7,7 @@ cd "$HOME"
 [ ! -L icloud-drive ] && ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" icloud-drive
 [ ! -L lolbrary ] && ln -s "$HOME/Library" lolbrary
 
-for link in .gemrc .gitconfig .gitignore_global .homebridge .profile .bashrc .vim .vimrc bin .vscode .zprofile .zshenv .zshrc .fzf.zsh .fzf.bash; do
+for link in .gemrc .gitconfig .gitignore_global .homebridge .profile .bashrc .vim .vimrc bin .vscode .zprofile .zshenv .zshrc .fzf.zsh .fzf.bash .tmux.conf; do
   if [ -L "$HOME/$link" ]; then
     echo "Link '$link' already exists"
   else
@@ -38,7 +38,8 @@ else
 fi
 
 # Brew installations
-for pkg in zsh bash-completion git nodenv node-build rbenv ruby-build postgresql wget tree jid jq chromedriver phantomjs heroku fzf ripgrep; do
+# brew cask install chromedriver
+for pkg in zsh bash-completion git nodenv node-build rbenv ruby-build postgresql wget tree jid jq phantomjs heroku fzf ripgrep z vim; do
   if brew list -1 | grep -q "^${pkg}\$"; then
     echo "Package '$pkg' is installed; updating:"
     brew upgrade "$pkg" --cleanup || true

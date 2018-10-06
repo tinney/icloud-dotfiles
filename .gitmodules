@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/fzf.vim"]
 	path = .vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule ".vim/bundle/vim-vue"]
+	path = .vim/bundle/vim-vue
+	url = https://github.com/posva/vim-vue.git

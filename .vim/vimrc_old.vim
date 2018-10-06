@@ -98,7 +98,7 @@ map K <Nop>
 
 " Textmate CMD-t emulation
 let g:fuf_enumeratingLimit = 25
-"map <leader>t :FufTaggedFile<CR>
+map <leader>z :FufTaggedFile<CR>
 map <leader>t :CtrlP<CR>
 map <leader>T :CtrlPTag<CR>
 map <leader><C-t> :RegenTags<CR>:FufRenewCache<CR>:CtrlPClearAllCaches<CR>
@@ -138,11 +138,11 @@ noremap <leader>F :AckWithIgnore -i ''<Left>
 " used to set the clipboard buffer to system clipboard. example use: ,cp to
 " paste from clipboard
 map <leader>c "*
+set clipboard=unnamed
 
 " make E work
 cabbrev E Explore
 
-set clipboard=unnamed
 
 let g:vim_ignore = [
                       \ "node_modules",

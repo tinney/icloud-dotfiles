@@ -20,9 +20,10 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+set nowrap
 
 set ruler
-set relativenumber
+" set relativenumber
 set visualbell
 
 " comment out a line
@@ -89,10 +90,20 @@ set visualbell t_vb= " disable audible bell in terminal
 " use ctrl-p for fzf tab split
 nnoremap <silent> <C-p> :Files<CR>
 imap <C-x><C-l> <plug>(fzf-complete-line)
+
+" fzf {{{
+set rtp+=~/.fzf
+nnoremap <leader>t :Files<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>d :Tags<CR>
+nnoremap <leader>s :Ag<CR>
+
+" }}}
 "
 " " add a Find command using ripgrep
-" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-" nnoremap <leader>ff :Find<CR>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+nnoremap <leader>ff :Find<CR>
 "
 " " allow project specific vimrcs
 set exrc
@@ -116,7 +127,8 @@ nnoremap <C-H> <C-W><C-H>
 " " @tenderlove neckbeard settings
 let ruby_space_errors = 1
 let c_space_errors = 1
-" set colorcolumn=81 " show visual indicator of >80c lines
+set colorcolumn=80 " show visual indicator of >80c lines
+hi ColorColumn ctermbg=grey guibg=grey
 "
 " " cargo cult search and align settings
 " vnoremap <leader>gg y:Ggrep <c-r>"<cr>

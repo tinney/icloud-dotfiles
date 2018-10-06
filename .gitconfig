@@ -11,10 +11,7 @@
   st = status
   co = checkout
   undo = reset HEAD~1 --mixed
-
-[core]
-	excludesfile = /Users/justin/.gitignore_global
-	mergetool = opendiff
+	pushf = push --force-with-lease
 
 [branch]
 	autosetuprebase = always
@@ -49,6 +46,7 @@
 [core]
   quotepath = false
 	excludesfile = /Users/tinney/.gitignore_global
+	mergetool = opendiff
 
 [push]
 	default = simple
@@ -81,3 +79,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[credential]
+	helper = osxkeychain
