@@ -7,7 +7,7 @@ cd "$HOME"
 [ ! -L icloud-drive ] && ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" icloud-drive
 [ ! -L lolbrary ] && ln -s "$HOME/Library" lolbrary
 
-for link in .gemrc .gitconfig .gitignore_global .homebridge .profile .bashrc .vim .vimrc bin .vscode .zprofile .zshenv .zshrc .fzf.zsh .fzf.bash .tmux.conf; do
+for link in .gemrc .gitconfig .gitignore_global .profile .bashrc .vim .vimrc bin .fzf.bash .tmux.conf; do
   if [ -L "$HOME/$link" ]; then
     echo "Link '$link' already exists"
   else
@@ -25,44 +25,37 @@ cd ..
 
 ## Disabling shadows on windows when taking screenshots - requires killall SystemUIServer
 defaults write com.apple.screencapture disable-shadow -bool true
-## allow disabling inline video in safari http://www.kirkville.com/stop-auto-play-videos-from-annoying-you-in-your-browser/
-defaults write com.apple.Safari WebKitMediaPlaybackAllowsInline -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
+
+## Keyboard Repeat
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Install things
 if command -v brew; then
   echo "Homebrew installed; updating:"
   brew update
 else
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 # Brew installations
-# brew cask install chromedriver
-for pkg in zsh bash-completion git nodenv node-build rbenv ruby-build postgresql wget tree jid jq phantomjs heroku fzf ripgrep z vim; do
-  if brew list -1 | grep -q "^${pkg}\$"; then
-    echo "Package '$pkg' is installed; updating:"
-    brew upgrade "$pkg" --cleanup || true
-  else
-    brew install "$pkg"
-  fi
-done
+brew bundle --file=icloud-drive/dotfiles/bin/Brewfile
 
 if brew list -1 | grep -q "^universal-ctags\$"; then
   echo "Package 'universal-ctags' is installed; updating:"
-  brew upgrade bash-completion --cleanup || true
+  brew upgrade bash-completion || true
 else
-  brew tap universal-ctags/universal-ctags
   brew install --HEAD universal-ctags
 fi
 
-## Set shell to zsh
+## Set to brew bash
+echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/bash
 
-# sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
-# you can also do this in the preference pane for users
 
 ## Set up node
-NODE_VERSION="6.9.2"
+NODE_VERSION="21.7.1"
 if [ -d ".nodenv/versions/$NODE_VERSION" ]; then
   echo "Node $NODE_VERSION already installed"
 else
@@ -72,7 +65,7 @@ eval "$(nodenv init -)"
 nodenv global "$NODE_VERSION"
 
 ## Set up ruby
-RUBY_VERSION="2.3.3"
+RUBY_VERSION="3.0.0"
 if [ -d ".rbenv/versions/$RUBY_VERSION" ]; then
   echo "Ruby $RUBY_VERSION already installed"
 else

@@ -16,16 +16,16 @@ The basic gist of this:
 Fork this repo and clone it into your iCloud Drive as "dotfiles" like so:
 
 ```
-$ git clone --recursive https://github.com/searls/icloud-dotfiles.git "~/Library/Mobile Documents/com~apple~CloudDocs/dotfiles"
+$ git clone --recursive https://github.com/tinney/icloud-dotfiles.git "~/Library/Mobile Documents/com~apple~CloudDocs/dotfiles"
 ```
 
 ### 2. Run the setup script
 
 Now, run the initial setup script (which you can review
-[here](https://github.com/searls/icloud-dotfiles/blob/master/bin/setup-new-mac)):
+[here](https://github.com/tinney/icloud-dotfiles/blob/master/bin/setup-new-mac)):
 
 ```
-$ ~/Library/Mobile\ Documents/com~apple~CloudDocs/dotfiles/bin/setup-new-mac
+~/Library/Mobile\ Documents/com~apple~CloudDocs/dotfiles/bin/setup-new-mac
 ```
 
 In my case, this sets up my symlinks, installs/updates my brew formulas,

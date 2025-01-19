@@ -15,6 +15,7 @@ set tags+=.git/tags
 
 " type ,T to recreate ctags (typically after adding a file/type/method)
 map <Leader>T :!ctags --tag-relative=yes --extras=+f -Rf.git/tags --exclue=tmp --exclude=.git --exclude=pkg --exclude=node_modules --languages=-sql<CR><CR>
+" type ,T to recreate ctags (typically after adding a file/type/method)
 
 set expandtab
 set shiftwidth=2
@@ -44,7 +45,8 @@ set bs=2
 " bring up buffer list. ,,<CR> switches to last used buffer
 map <leader>, :CtrlPBuffer<CR>
 
-" set laststatus=2
+" Show status line always
+set laststatus=2
 
 " Force 2 lines above and below cursor
 set scrolloff=2
@@ -77,9 +79,7 @@ autocmd BufLeave,FocusLost * silent! wall " auto-save on blur. YOLO!
 set autoread " automatically reload when files change because YOLO!
 
 " share the macOS pasteboard instead of a Vim register
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+set clipboard+=unnamed
 
 autocmd! GUIEnter * set vb t_vb= " disable audible bell in macvim
 set visualbell t_vb= " disable audible bell in terminal
@@ -127,8 +127,8 @@ nnoremap <C-H> <C-W><C-H>
 " " @tenderlove neckbeard settings
 let ruby_space_errors = 1
 let c_space_errors = 1
-set colorcolumn=80 " show visual indicator of >80c lines
-hi ColorColumn ctermbg=grey guibg=grey
+" set colorcolumn=80 " show visual indicator of >80c lines
+" hi ColorColumn ctermbg=grey guibg=grey
 "
 " " cargo cult search and align settings
 " vnoremap <leader>gg y:Ggrep <c-r>"<cr>
@@ -157,3 +157,5 @@ hi ColorColumn ctermbg=grey guibg=grey
 "   let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
 "   return m[1] . spaces . m[2]
 " endfunction
+"
+nnoremap <c-p> :FZF<cr>

@@ -1,6 +1,6 @@
 [user]
-  name = Dustin Tinney
-  email = tinney@gmail.com
+	name = Dustin Tinney
+	email = tinney@gmail.com
 
 [alias]
   remotebranch = !sh -c 'git push origin HEAD:refs/heads/$0 && git checkout --track -b $0 origin/$0'
@@ -45,7 +45,7 @@
 
 [core]
   quotepath = false
-	excludesfile = /Users/tinney/.gitignore_global
+	excludesfile = /Users/dustintinney/.gitignore
 	mergetool = opendiff
 
 [push]
@@ -81,3 +81,5 @@
 	required = true
 [credential]
 	helper = osxkeychain
+[init]
+	defaultBranch = main

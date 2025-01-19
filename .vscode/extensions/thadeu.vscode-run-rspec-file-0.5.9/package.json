@@ -1,0 +1,135 @@
+{
+	"name": "vscode-run-rspec-file",
+	"displayName": "vscode-run-rspec-file",
+	"description": "Provide simple command to Run RSpec File",
+	"version": "0.5.9",
+	"publisher": "Thadeu",
+	"icon": "rspec.png",
+	"galleryBanner": {
+		"color": "#232323",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Extension Packs",
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.runAllFilesOnRspec",
+		"onCommand:extension.runFileOnRspec",
+		"onCommand:extension.runLineOnRspec",
+		"onCommand:extension.runOpenSpec",
+		"onCommand:extension.runOnLastSpec"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thadeu/vscode-run-rspec-file.git"
+	},
+	"homepage": "https://github.com/thadeu/vscode-run-rspec-file",
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "ruby",
+				"extensions": [
+					".rb"
+				]
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.runAllFilesFolder",
+				"title": "RSpec: Run All Files this folder"
+			},
+			{
+				"command": "extension.runAllFilesOnRspec",
+				"title": "RSpec: Run All Files on RSpec"
+			},
+			{
+				"command": "extension.runFileOnRspec",
+				"title": "RSpec: Run File on RSpec"
+			},
+			{
+				"command": "extension.runLineOnRspec",
+				"title": "RSpec: Run Line on RSpec"
+			},
+			{
+				"command": "extension.runOpenSpec",
+				"title": "RSpec: Run Open spec this file"
+			},
+			{
+				"command": "extension.runOnLastSpec",
+				"title": "RSpec: Run On Last Spec"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.runAllFilesFolder",
+					"group": "1_modification"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "extension.runLineOnRspec",
+				"key": "cmd+l",
+				"when": "editorLangId == 'ruby'"
+			},
+			{
+				"command": "extension.runFileOnRspec",
+				"key": "cmd+alt+l",
+				"when": "editorLangId == 'ruby'"
+			},
+			{
+				"command": "extension.runOpenSpec",
+				"key": "cmd+alt+o",
+				"when": "editorLangId == 'ruby'"
+			},
+			{
+				"command": "extension.runOnLastSpec",
+				"key": "cmd+y",
+				"when": "editorLangId == 'ruby'"
+			}
+		],
+		"configuration": {
+			"title": "vscode-run-rspec-file",
+			"properties": {
+				"vscode-run-rspec-file.custom-command": {
+					"type": "string",
+					"default": "bundle exec rspec --color",
+					"description": "RSpec command to be used when running specs. Example: \"bundle exec rspec --color\""
+				}
+			}
+		}
+	},
+	"keywords": [
+		"Ruby on Rails",
+		"Rspec",
+		"Spec",
+		"Ruby"
+	],
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^8.10.25",
+		"tslint": "^5.8.0",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.21"
+	},
+	"__metadata": {
+		"id": "6a6cd353-e54a-4af6-bba1-e89298b1ff3e",
+		"publisherId": "54b6b728-de15-41eb-8600-f6870c22b0cb",
+		"publisherDisplayName": "thadeu"
+	}
+}

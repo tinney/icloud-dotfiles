@@ -139,6 +139,7 @@ noremap <leader>F :AckWithIgnore -i ''<Left>
 " paste from clipboard
 map <leader>c "*
 set clipboard=unnamed
+set laststatus=2
 
 " make E work
 cabbrev E Explore
