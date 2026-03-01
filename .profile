@@ -3,9 +3,6 @@
 ## Init Brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if command -v rbenv &>/dev/null; then
-  eval "$(rbenv init - bash)"
-fi
 if command -v pyenv &>/dev/null; then
   eval "$(pyenv init -)"
 fi
@@ -105,3 +102,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export NGROK_AUTHTOKEN="7j81xDnzLrAYwNNJndJ4M_djt6uaUU71WTP2nvNRs8"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/tinney/.lmstudio/bin"
+# End of LM Studio CLI section
+
